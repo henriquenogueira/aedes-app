@@ -16,7 +16,7 @@ function onDeviceReady() {
     };
 
     function onLocationError(error) {
-        alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        alert('Não foi possível achar sua localização. Habilite o location service e reinicie a aplicação.');
     }
 
     // Getting user's location
@@ -35,7 +35,15 @@ function onDeviceReady() {
         var type = $(this).attr('data-type');
         var description = $(this).attr('data-description');
 
-        var data = {category: type, latitude: latitude, longitude: longitude};
+        // Data to be submitted
+        var data = {
+            category: type,
+            latitude: latitude,
+            longitude: longitude,
+            device_id: device.uuid
+        };
+
+        // Sending report
         $.post(API_ENDPOINT, data, function (response) {
             alert('Registrado ' + description + ' na sua posição. Acompanhe os resultados pelo site.');
         });
