@@ -1,0 +1,19 @@
+{
+  "name": "aedespot-app",
+  "version": "1.0.0",
+  "description": "> Aplicativo que ajuda no combate ao Aedes Aegypti",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/henriquenogueira/aedes-app.git"
+  },
+  "author": "Henrique Nogueira",
+  "license": "Apache-2.0.0",
+  "keywords": [
+    "ecosystem:phonegap",
+    "ecosystem:cordova",
+  ],
+  "bugs": {
+    "url": "https://github.com/henriquenogueira/aedes-app/issues"
+  },
+  "homepage": "https://github.com/henriquenogueira/aedes-app"
+}

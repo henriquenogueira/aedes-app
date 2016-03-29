@@ -1,0 +1,23 @@
+{
+  "name": "aedes-app",
+  "authors": [
+    "Henrique Nogueira <hrqnogueira@gmail.com>"
+  ],
+  "description": "Aplicativo que ajuda no combate ao Aedes Aegypti",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Materialize": "materialize#~0.97.5",
+    "font-awesome": "~4.5.0"
+  }
+}
