@@ -9,36 +9,25 @@ function onDeviceReady() {
     // To persist coordinates of the mobile
     var latitude, longitude, photoData = null;
 
-    // Position handler: persists
-    var onLocationSuccess = function(position) {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
+    var cameraOptions = {
+        quality: 50,
+        destinationType: navigator.camera.DestinationType.FILE_URI
     };
 
-    function onLocationError(error) {
-        alert('Não foi possível achar sua localização. Habilite o location service e reinicie a aplicação.');
-    }
+    var locationOptions = {
+        enableHighAccuracy: true,
+        timeout: 10000
+    };
 
     // Getting user's location
     navigator.geolocation.getCurrentPosition(
         onLocationSuccess,
         onLocationError,
-        {
-            enableHighAccuracy: true,
-            timeout: 10000
-        }
+        locationOptions
     );
 
     $("#addPhotoButton").click(function () {
-        navigator.camera.getPicture(function(imageData) {
-            photoData = imageData;
-            $('#photo').attr('src', photoData);
-        }, function(err) {
-            alert("Não foi possível adicionar foto.")
-        }, {
-			quality: 50,
-			destinationType: navigator.camera.DestinationType.FILE_URI
-		});
+        navigator.camera.getPicture(onPictureSuccess, onPictureError, cameraOptions);
     });
 
     $(".container a").click(function () {
@@ -73,9 +62,28 @@ function onDeviceReady() {
 
     function uploadSuccess(response) {
         alert('Registrada ocorrência na sua posição. Acompanhe os resultados pelo site.');
+        $("#photo").removeAttr('src');
     }
 
     function uploadFailed(err) {
         alert('Não foi possível enviar o relatório.');
+    }
+
+    function onLocationSuccess(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+    };
+
+    function onLocationError(error) {
+        alert('Não foi possível achar sua localização. Habilite o location service e reinicie a aplicação.');
+    }
+
+    function onPictureSuccess(imageData) {
+        photoData = imageData;
+        $('#photo').attr('src', photoData);
+    }
+
+    function onPictureError(err) {
+        alert("Não foi possível adicionar foto.")
     }
 }
