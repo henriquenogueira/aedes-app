@@ -63,6 +63,7 @@ function onDeviceReady() {
     function uploadSuccess(response) {
         alert('Registrada ocorrência na sua posição. Acompanhe os resultados pelo site.');
         $("#photo").removeAttr('src');
+        photoData = null;
     }
 
     function uploadFailed(err) {
