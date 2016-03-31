@@ -10,8 +10,12 @@ function onDeviceReady() {
     var latitude, longitude, photoData = null;
 
     var cameraOptions = {
-        quality: 50,
-        destinationType: navigator.camera.DestinationType.FILE_URI
+       quality: 80,
+       targetWidth: 1400,
+       targetHeight: 800,
+       destinationType: Camera.DestinationType.FILE_URI,
+       sourceType: Camera.PictureSourceType.CAMERA,
+       correctOrientation: true
     };
 
     var locationOptions = {
